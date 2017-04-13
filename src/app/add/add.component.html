@@ -1,0 +1,50 @@
+<form #formAdd="ngForm" (ngSubmit)="onSubmit()" [formGroup]="formGroupTransport">
+
+  <div class="form-group">
+    <label>title<input formControlName="title" type='text' class="form-control" placeholder="title"></label>
+  </div>
+  <div *ngIf="formGroupTransport.controls.title.status === 'INVALID' && isSubmit" class="alert alert-danger">
+         Title is required
+  </div>
+
+  <div class="form-group">
+    <label>status
+      <select formControlName="status" class="form-control" >
+        <option *ngFor="let status of listStatus">
+          {{status}}
+        </option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>departure date<br>
+    <p-calendar  showTime="showTime" hourFormat="24" formControlName="departureDate" dateFormat="dd/mm/y" ></p-calendar>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>arrival date<br>
+    <p-calendar showTime="showTime" hourFormat="24" formControlName="arrivalDate" dateFormat="dd/mm/y" ></p-calendar>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>vehicule
+      <input type="text" placeholder="vehicule" formControlName="vehicule"  class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>comment
+      <input type="text" placeholder="comment" formControlName="comment"  class="form-control">
+    </label>
+  </div>
+
+  <!--<span [hidden]="formGroupTransport.controls.title.valid">title required</span>-->
+  <div class="alert alert-{{alert.status}}" *ngIf="alert.show">
+    {{ alert.message }}
+  </div>
+
+  <button class='btn btn-default' type='submit'>save</button>
+</form>

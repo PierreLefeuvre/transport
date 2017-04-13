@@ -1,0 +1,48 @@
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>Title</th><th>Status</th><th>Departure date</th><th>Arrival date</th><th>Vehicule</th><th>Comment</th><th>Edit</th><th>Delete</th><th>show</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <tr *ngFor="let transport of transports let i = index;">
+          <td>{{transport.title}}</td>
+          <td>{{transport.status}}</td>
+          <td>{{transport.departureDate | date: "yMMMdjms"}}</td>
+          <td>{{transport.arrivalDate | date: "yMMMdjms"}}</td>
+          <td>{{transport.vehicule}}</td>
+          <td>{{transport.comment}}</td>
+          <td><a routerLink="/edit/{{i}}" >edit</a></td>
+          <td><a (click)="delete(i)">delete</a></td>
+          <td><a (click)="showOnMap(i)">show</a></td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+<sebm-google-map [latitude]="latA" [longitude]="lngA">
+
+  <sebm-google-map-marker [latitude]="latA" [longitude]="lngA"></sebm-google-map-marker>
+
+  <sebm-google-map-marker [latitude]="latB" [longitude]="lngB"></sebm-google-map-marker>
+
+  <!--<sebm-google-map-polyline>
+          
+        <sebm-google-map-info-window>
+          <strong>InfoWindow content</strong>
+        </sebm-google-map-info-window>
+        
+        <sebm-google-map-polyline-point [latitude]="latA" [longitude]="lngA" >
+        </sebm-google-map-polyline-point>
+        
+        <sebm-google-map-polyline-point [latitude]="latB" [longitude]="lngB" >
+        </sebm-google-map-polyline-point>
+
+  </sebm-google-map-polyline>-->
+  
+</sebm-google-map>
+
+<hr>

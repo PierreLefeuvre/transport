@@ -1,0 +1,50 @@
+
+<form (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label>title
+      <input type="text" placeholder="title" [(ngModel)]="transport.title" name='title'  class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>status
+      <select [(ngModel)]="transport.status" name="selectStatus" class="form-control" >
+        <option *ngFor="let status of listStatus" [ngValue]="status" [selected]="transport.status === status">
+          {{status}}
+        </option>
+      </select>
+    </label>
+  </div>
+  
+  <div class="form-group">
+    <label>departure date<br>
+    <p-calendar [(ngModel)]="transport.departureDate" showTime="showTime" hourFormat="24" name="departureDate" dateFormat="dd/mm/y"></p-calendar>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>arrival date<br>
+    <p-calendar [(ngModel)]="transport.arrivalDate" showTime="showTime" hourFormat="24" name="arrivalDate" dateFormat="dd/mm/y"></p-calendar>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>vehicule
+      <input type="text" placeholder="vehicule" [(ngModel)]="transport.vehicule" name='vehicule'  class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>comment
+      <input type="text" placeholder="comment" [(ngModel)]="transport.comment" name='comment'  class="form-control">
+    </label>
+  </div>
+
+  <!--<div class="alert alert-{{alert.status}}" *ngIf="alert.show">
+    {{ alert.message }}
+  </div>-->
+  <alert-message [message]="alert.message" [show]="alert.show" [status]="alert.status" ></alert-message>
+
+  <button class='btn btn-default' type='submit' >save</button>
+</form>
